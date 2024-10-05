@@ -392,10 +392,9 @@ SELECT
     ,a.year
     ,a.ProductID
     ,Name
-    ,COALESCE(sales, 0) AS sales_cnt           --1
-    ,COALESCE(stock_cnt, 0) AS stock_cnt       --2
-    ,ROUND ( stock_cnt / sales  ,1) AS ratio   --3
-    -->ROUND ( COALESCE(stock_cnt, 0) / sales  ,1) AS ratio 
+    ,COALESCE(sales, 0) AS sales_cnt           
+    ,COALESCE(stock_cnt, 0) AS stock_cnt       
+    ,ROUND ( COALESCE(stock_cnt, 0) / sales  ,1) AS ratio 
 FROM sales_info AS a
 LEFT JOIN stock_info AS b
     ON a.ProductID = b.ProductID
